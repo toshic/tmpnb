@@ -135,7 +135,7 @@ class DockerSpawner():
 
         untagged_image = container_config.image.split(':')[0]
         def has_matching_image(container):
-            return container['Image'].split(':')[0] == untagged_image
+            return str(container['Image']).split(':')[0] == untagged_image
 
         matching = [container for container in existing if has_matching_image(container)]
         raise gen.Return(matching)
